@@ -1,0 +1,30 @@
+= asciidoctorj-jruby-test
+
+Showcase classloading diffs between JRuby 1.7 and 9.0.0.0
+
+Build for JRuby 1.7:
+
+----
+./gradlew clean ear -PjrubyVersion=1.7.20.1
+----
+
+Build for JRuby 9.0.0.0:
+
+
+----
+./gradlew clean ear -PjrubyVersion=9.0.0.0.pre2
+----
+
+Then deploy ear from `adtestear/build/adtestear.ear` on a TomEE plus and point your browser to http://localhost:8080/adtestwar/Test
+
+With JRuby 1.7 you will see a Hello World page.
+
+With JRuby 9.0.0.0.pre2 you will see this error:
+
+----
+org.jruby.exceptions.RaiseException: (LoadError) no such file to load -- asciidoctor
+	at org.jruby.RubyKernel.require(org/jruby/RubyKernel.java:966)
+	at RUBY.require(uri:classloader:/META-INF/jruby.home/lib/ruby/stdlib/rubygems/core_ext/kernel_require.rb:54)
+...
+----
+

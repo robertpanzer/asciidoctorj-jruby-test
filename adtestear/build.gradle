@@ -1,0 +1,9 @@
+apply plugin: 'ear'
+
+dependencies {
+
+	deploy project(path: ':adtestwar', configuration: 'archives')
+
+	earlib "org.jruby:jruby-complete:$jrubyVersion"
+
+}
